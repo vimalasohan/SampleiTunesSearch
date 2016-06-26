@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App_Splash" translatesAutoresizingMaskIntoConstraints="NO" id="mXZ-CV-dNU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search" translatesAutoresizingMaskIntoConstraints="NO" id="5Q5-np-4X1">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="6T0-yq-7Dn"/>
+                                    <constraint firstAttribute="width" constant="200" id="oXz-JN-u0U"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mXZ-CV-dNU" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="6qL-as-yIb"/>
+                            <constraint firstItem="5Q5-np-4X1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Bn5-Or-40j"/>
+                            <constraint firstAttribute="trailing" secondItem="mXZ-CV-dNU" secondAttribute="trailing" id="HIz-ZL-yoR"/>
+                            <constraint firstItem="5Q5-np-4X1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RwI-Oi-4pV"/>
+                            <constraint firstItem="mXZ-CV-dNU" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="dhe-3W-HK5"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="mXZ-CV-dNU" secondAttribute="bottom" id="xM2-Ul-ur2"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="App_Splash" width="320" height="569"/>
+        <image name="Search" width="1733" height="1733"/>
+    </resources>
+</document>
