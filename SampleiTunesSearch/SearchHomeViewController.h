@@ -11,6 +11,6 @@
 @interface SearchHomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic, strong)IBOutlet UITableView *searchTableView;
--(NSArray*)searchFieldClicked:(NSNotification *)notification;
+-(void)searchFieldClicked:(NSNotification *)notification;
 
 @end

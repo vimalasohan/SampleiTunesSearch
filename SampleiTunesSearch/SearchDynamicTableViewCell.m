@@ -26,22 +26,22 @@
 
 #pragma mark- Cell implementation and Reset
 
--(void)setCellForSearch:(NSDictionary *)movie
+-(void)setCellForSearch:(NSDictionary *)responseArrayDictionary
 {
-    if([movie objectForKey:RESULT_STRING_TRACK_NAME]!=nil){
-        self.trackNameString.text = [movie objectForKey:RESULT_STRING_TRACK_NAME];
+    if([responseArrayDictionary objectForKey:RESULT_STRING_TRACK_NAME]!=nil){
+        self.trackNameString.text = [responseArrayDictionary objectForKey:RESULT_STRING_TRACK_NAME];
     }
     else{
-        self.trackNameString.text = [movie objectForKey:RESULT_STRING_COLLECTION_NAME];
+        self.trackNameString.text = [responseArrayDictionary objectForKey:RESULT_STRING_COLLECTION_NAME];
     }
-    self.shortDescriptionString.text = [movie objectForKey: RESULT_STRING_SHORT_DESCRIPTION];
-    if ([[movie objectForKey:RESULT_STRING_TRACK_PRICE] stringValue]!=nil) {
+    self.shortDescriptionString.text = [responseArrayDictionary objectForKey: RESULT_STRING_SHORT_DESCRIPTION];
+    if ([[responseArrayDictionary objectForKey:RESULT_STRING_TRACK_PRICE] stringValue]!=nil) {
         INVOKE_PRICE(RESULT_STRING_TRACK_PRICE)
     }
-    else if ([[movie objectForKey:RESULT_STRING_COLLECTION_PRICE] stringValue]!=nil){
+    else if ([[responseArrayDictionary objectForKey:RESULT_STRING_COLLECTION_PRICE] stringValue]!=nil){
         INVOKE_PRICE(RESULT_STRING_COLLECTION_PRICE)
     }
-    else if ([[movie objectForKey:RESULT_STRING_PRICE] stringValue]!=nil){
+    else if ([[responseArrayDictionary objectForKey:RESULT_STRING_PRICE] stringValue]!=nil){
         INVOKE_PRICE(RESULT_STRING_PRICE)
     }
     else{
@@ -51,7 +51,7 @@
     dispatch_async(concurrentQueue, ^{
         if ([self basicCellImageView]!=nil) {
 
-        NSURL *imageURL = [[NSURL alloc] initWithString:[movie objectForKey:RESULT_STRING_IMAGE_URL_60]];
+        NSURL *imageURL = [[NSURL alloc] initWithString:[responseArrayDictionary objectForKey:RESULT_STRING_IMAGE_URL_60]];
         [self.basicCellImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:DEFAULT_IMAGE_LOADING]];
         }
     });

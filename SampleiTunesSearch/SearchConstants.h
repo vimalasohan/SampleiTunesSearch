@@ -17,7 +17,7 @@
 }
 #define INVOKE_PRICE(RESPONSE_PRICE)\
 {\
-[self numberFormatForPrice:[[movie objectForKey:RESPONSE_PRICE] stringValue]];\
+[self numberFormatForPrice:[[responseArrayDictionary objectForKey:RESPONSE_PRICE] stringValue]];\
 self.priceTrackString.text = [NSString stringWithFormat:DOLLAR_STRING,_responseValueForPrice];\
 }
 #define UI_LOADING_INDICATOR_COLOR [UIColor colorWithRed:0.09 green:0.71 blue:0.96 alpha:1.0];
@@ -33,6 +33,10 @@ static NSString * const SEGUE_IDENTIFIER = @"showTrackDetails";
 static NSString * const LOADING_INDICATOR_TITLE = @"Searching";
 
 static NSString * const RELOAD_TABLEVIEWCELL_ANIMATION_KEY = @"UITableViewReloadDataAnimationKey";
+
+static NSString * const SEARCH_BAR_STRING_VALUE = @"searchBarString";
+
+static NSString * const ENTITY_VALUE_SELECTED = @"entitySelectionString";
 
 //ALERT MESSAGES
 static NSString * const ERROR_MESSAGE_ALERTVIEW_TITLE = @"OOPS..";

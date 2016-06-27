@@ -15,6 +15,7 @@
 @interface SearchContainerViewController ()<VSDropdownDelegate>
 
 @property (nonatomic, retain) NSString *allSelectedItems;
+@property (nonatomic, retain) NSDictionary *searchValues;
 
 @end
 
@@ -39,13 +40,19 @@ VSDropdown *_dropdown;
     [self showDropDownForButton:sender adContents:ENTITY_VALUES_DROPDOWN multipleSelection:NO];
 }
 
+-(void) dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:SEARCHBUTTON_CLICKED_NOTIFICATION object:nil];
+}
+
 #pragma mark - SearchBar Delegate
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     _searchBarString= searchBar.text;
     [searchBar resignFirstResponder];
-    [[NSNotificationCenter defaultCenter]postNotificationName:SEARCHBUTTON_CLICKED_NOTIFICATION object:_searchBarString];
+    _searchValues = @{SEARCH_BAR_STRING_VALUE:_searchBarString,
+                      ENTITY_VALUE_SELECTED:_allSelectedItems};
+    [[NSNotificationCenter defaultCenter]postNotificationName:SEARCHBUTTON_CLICKED_NOTIFICATION object:nil userInfo:_searchValues];
 }
 
 #pragma mark - Animated Dropdown Delegate
@@ -64,8 +71,6 @@ VSDropdown *_dropdown;
         
     }
     [btn setTitle:_allSelectedItems forState:UIControlStateNormal];
-        [[NSNotificationCenter defaultCenter]postNotificationName:ENTITYBUTTON_CLICKED_NOTIFICATION object:_allSelectedItems];
-    
 }
 
 -(void)showDropDownForButton:(UIButton *)sender adContents:(NSArray *)contents multipleSelection:(BOOL)multipleSelection

@@ -34,7 +34,6 @@
     else{
         self.detailsTrackName.text = [_detailsData objectForKey:RESULT_STRING_COLLECTION_NAME];
     }
-    [self invokeWebViewDescription];
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(concurrentQueue, ^{
         if ([_detailsData objectForKey:RESULT_STRING_IMAGE_URL_100]!=nil) {
@@ -42,6 +41,7 @@
             [self.detailsImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:DEFAULT_IMAGE_LOADING]];
         }
     });
+    [self invokeWebViewDescription];
 }
 
 - (void)invokeWebViewDescription
@@ -54,7 +54,9 @@
     }
     else if ([_detailsData objectForKey:RESULT_STRING_PREVIEW_URL]!=nil)
     {
-        INVOKE_DESCRIPTION(RESULT_STRING_PREVIEW_URL)
+        NSURL *previewURL = [[NSURL alloc] initWithString:[_detailsData objectForKey:RESULT_STRING_PREVIEW_URL]];
+        [self.descriptionWebview loadRequest:[NSURLRequest requestWithURL:previewURL]];
+
     }
     else
     {

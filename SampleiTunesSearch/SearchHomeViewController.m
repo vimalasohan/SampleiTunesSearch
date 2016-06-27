@@ -15,7 +15,7 @@
 #import "SearchConstants.h"
 
 @interface SearchHomeViewController ()
-@property (nonatomic, retain) NSArray *movies;
+@property (nonatomic, retain) NSArray *reponseArray;
 -(void)showActivityIndicator;
 @end
 
@@ -25,11 +25,10 @@ NSString *entityValue;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.movies = [[NSArray alloc] init];
+    self.reponseArray = [[NSArray alloc] init];
     _searchTableView.estimatedRowHeight = TABLEVIEW_ESTIMATED_ROW_HEIGHT;
     _searchTableView.rowHeight = UITableViewAutomaticDimension;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(searchFieldClicked:) name:SEARCHBUTTON_CLICKED_NOTIFICATION object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getEntityValue:) name:ENTITYBUTTON_CLICKED_NOTIFICATION object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,8 +39,8 @@ NSString *entityValue;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
-    if (self.movies && self.movies.count) {
-        return self.movies.count;
+    if (self.reponseArray && self.reponseArray.count) {
+        return self.reponseArray.count;
     } else {
         return ZERO_COUNT;
     }
@@ -51,8 +50,8 @@ NSString *entityValue;
 {
     NSString *basicReuseIdentifier = CELL_REUSE_IDENTIFIER;
     SearchDynamicTableViewCell *searchTableViewCell = [tableView dequeueReusableCellWithIdentifier:basicReuseIdentifier forIndexPath:indexPath];
-    NSDictionary *movie = [self.movies objectAtIndex:indexPath.row];
-    [searchTableViewCell setCellForSearch:movie];
+    NSDictionary *responseArrayDictionary = [self.reponseArray objectAtIndex:indexPath.row];
+    [searchTableViewCell setCellForSearch:responseArrayDictionary];
     return searchTableViewCell;
     
 }
@@ -63,21 +62,17 @@ NSString *entityValue;
 
 #pragma mark- Search Button clicked
 
--(void)getEntityValue:(NSNotification *)notification{
-    
-    entityValue = [notification object];
-}
-
--(NSArray*)searchFieldClicked:(NSNotification *)notification{
-    NSString *loadURLString = [NSString stringWithFormat:END_POINT_URL,[notification object],entityValue];
+-(void)searchFieldClicked:(NSNotification *)notification{
+    NSDictionary *userInfo = notification.userInfo;
+    NSString *loadURLString = [NSString stringWithFormat:END_POINT_URL,[userInfo objectForKey:SEARCH_BAR_STRING_VALUE],[userInfo objectForKey:ENTITY_VALUE_SELECTED]];
     NSURL *baseURL = [[NSURL alloc] initWithString:loadURLString];
     SCLAlertView *alert = [[SCLAlertView alloc] init];
     [self showActivityIndicator];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:baseURL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        self.movies = [responseObject objectForKey:RESULTS_STRING];
-        NSLog(@"JSON: %@", responseObject);
-        if (self.movies.count==ZERO_COUNT) {
+        self.reponseArray = [responseObject objectForKey:RESULTS_STRING];
+        //NSLog(@"JSON: %@", responseObject);
+        if (self.reponseArray.count==ZERO_COUNT) {
             [alert showInfo:self title:INFO_MESSAGE_ALERTVIEW_TITLE subTitle:INFO_MESSAGE_ALERTVIEW_SUBTITLE closeButtonTitle:ALERT_CLOSEBUTTON_TITLE duration:ALERT_VIEW_TIME_DURATION];
         }
         [spinnerSmall dismissAndStopAnimation];
@@ -93,8 +88,6 @@ NSString *entityValue;
          closeButtonTitle:ALERT_CLOSEBUTTON_TITLE duration:ALERT_VIEW_TIME_DURATION];
          
      }];
-    
-    return self.movies;
 }
 
 
@@ -128,7 +121,7 @@ NSString *entityValue;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:SEGUE_IDENTIFIER]) {
-        NSDictionary *detailsData = [self.movies objectAtIndex:_searchTableView.indexPathForSelectedRow.row];
+        NSDictionary *detailsData = [self.reponseArray objectAtIndex:_searchTableView.indexPathForSelectedRow.row];
         SearchDetailsViewController *detailViewController = [segue destinationViewController];
         detailViewController.detailsData = detailsData;
     }
