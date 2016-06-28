@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchHomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-
+@property (nonatomic, retain) NSArray *reponseArray;
 @property(nonatomic, strong)IBOutlet UITableView *searchTableView;
 -(void)searchFieldClicked:(NSNotification *)notification;
-
+-(void)searchFieldClicked:(NSNotification *)notification andCompletion:(void(^)(void))completion;
 @end

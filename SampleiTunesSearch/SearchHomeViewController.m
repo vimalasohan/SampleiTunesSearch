@@ -15,7 +15,6 @@
 #import "SearchConstants.h"
 
 @interface SearchHomeViewController ()
-@property (nonatomic, retain) NSArray *reponseArray;
 -(void)showActivityIndicator;
 @end
 
@@ -82,6 +81,36 @@ NSString *entityValue;
      {
          //NSLog(@"Error: %@", error);
          [spinnerSmall dismissAndStopAnimation];
+         NSString *getError = error.localizedDescription;
+         [alert showError:self title:ERROR_MESSAGE_ALERTVIEW_TITLE
+                 subTitle:[NSString stringWithFormat:ERROR_MESSAGE_ALERTVIEW_SUBTITLE,getError]
+         closeButtonTitle:ALERT_CLOSEBUTTON_TITLE duration:ALERT_VIEW_TIME_DURATION];
+         
+     }];
+}
+-(void)searchFieldClicked:(NSNotification *)notification andCompletion:(void(^)(void))completion{
+    NSDictionary *userInfo = notification.userInfo;
+    NSString *loadURLString = [NSString stringWithFormat:END_POINT_URL,[userInfo objectForKey:SEARCH_BAR_STRING_VALUE],[userInfo objectForKey:ENTITY_VALUE_SELECTED]];
+    NSURL *baseURL = [[NSURL alloc] initWithString:loadURLString];
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    [self showActivityIndicator];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:baseURL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        self.reponseArray = [responseObject objectForKey:RESULTS_STRING];
+        completion();
+        //NSLog(@"JSON: %@", responseObject);
+        if (self.reponseArray.count==ZERO_COUNT) {
+            [alert showInfo:self title:INFO_MESSAGE_ALERTVIEW_TITLE subTitle:INFO_MESSAGE_ALERTVIEW_SUBTITLE closeButtonTitle:ALERT_CLOSEBUTTON_TITLE duration:ALERT_VIEW_TIME_DURATION];
+        }
+        [spinnerSmall dismissAndStopAnimation];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self animateTableCell];
+        });    } failure:^(NSURLSessionTask *operation, NSError *error)
+     {
+         //NSLog(@"Error: %@", error);
+         [spinnerSmall dismissAndStopAnimation];
+         completion();
+
          NSString *getError = error.localizedDescription;
          [alert showError:self title:ERROR_MESSAGE_ALERTVIEW_TITLE
                  subTitle:[NSString stringWithFormat:ERROR_MESSAGE_ALERTVIEW_SUBTITLE,getError]

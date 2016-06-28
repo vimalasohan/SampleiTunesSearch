@@ -11,6 +11,7 @@
 #import "SearchContainerViewController.h"
 #import "SearchDetailsViewController.h"
 #import "SearchDynamicTableViewCell.h"
+#import "SearchConstants.h"
 
 @interface SampleiTunesSearchTests : XCTestCase
 
@@ -116,9 +117,19 @@
     [super tearDown];
 }
 
+-(void)testNotificationAndServiceTriggered{
+    
+    NSNotification *notification=[[NSNotification alloc] initWithName:SEARCHBUTTON_CLICKED_NOTIFICATION object:nil userInfo:@{SEARCH_BAR_STRING_VALUE:@"Harry", ENTITY_VALUE_SELECTED:@"Movie"}];
+    [homeViewController searchFieldClicked:notification andCompletion:^{
+        XCTAssertTrue(homeViewController.reponseArray.count>0);
+
+    }];
+}
+
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+
 }
 
 - (void)testPerformanceExample {
