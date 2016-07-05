@@ -44,6 +44,12 @@
 		B63F8A9B1D1DEE7100556908 /* SCLTimerDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = B63F8A861D1DEE7100556908 /* SCLTimerDisplay.m */; };
 		B63F8A9E1D1DEE7100556908 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B63F8A881D1DEE7100556908 /* UIImage+ImageEffects.m */; };
 		B6D1F7651D20491200BDE5CD /* SampleiTunesSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B61823581D1AD70B00D7972E /* SampleiTunesSearchTests.m */; };
+		B6D1F7681D2ABB3700BDE5CD /* SearchHomeViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1F7671D2ABB3700BDE5CD /* SearchHomeViewControl.swift */; };
+		B6D1F76A1D2ABB8D00BDE5CD /* SearchDynamicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1F7691D2ABB8D00BDE5CD /* SearchDynamicTableCell.swift */; };
+		B6D1F76C1D2ABBA700BDE5CD /* SearchContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1F76B1D2ABBA700BDE5CD /* SearchContainerView.swift */; };
+		B6D1F76E1D2ABBBB00BDE5CD /* SearchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1F76D1D2ABBBB00BDE5CD /* SearchDetailsView.swift */; };
+		B6D1F7731D2ABD0300BDE5CD /* Main_Swift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D1F7711D2ABD0300BDE5CD /* Main_Swift.storyboard */; };
+		B6D1F7771D2B29C500BDE5CD /* SwiftConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1F7761D2B29C500BDE5CD /* SwiftConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +148,13 @@
 		B63F8A871D1DEE7100556908 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		B63F8A881D1DEE7100556908 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		B6C8ABA61D1F583E00EBBC86 /* SearchConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConstants.h; sourceTree = "<group>"; };
+		B6D1F7661D2ABB3700BDE5CD /* SampleiTunesSearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleiTunesSearch-Bridging-Header.h"; sourceTree = "<group>"; };
+		B6D1F7671D2ABB3700BDE5CD /* SearchHomeViewControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHomeViewControl.swift; sourceTree = "<group>"; };
+		B6D1F7691D2ABB8D00BDE5CD /* SearchDynamicTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDynamicTableCell.swift; sourceTree = "<group>"; };
+		B6D1F76B1D2ABBA700BDE5CD /* SearchContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContainerView.swift; sourceTree = "<group>"; };
+		B6D1F76D1D2ABBBB00BDE5CD /* SearchDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDetailsView.swift; sourceTree = "<group>"; };
+		B6D1F7721D2ABD0300BDE5CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_Swift.storyboard; sourceTree = "<group>"; };
+		B6D1F7761D2B29C500BDE5CD /* SwiftConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,11 +334,34 @@
 			isa = PBXGroup;
 			children = (
 				B6C8ABA61D1F583E00EBBC86 /* SearchConstants.h */,
+				B6D1F7761D2B29C500BDE5CD /* SwiftConstants.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
 		B6D1F75E1D1F9CC200BDE5CD /* SearchLogic */ = {
+			isa = PBXGroup;
+			children = (
+				B6D1F7701D2ABBCF00BDE5CD /* ObjectiveC */,
+				B6D1F76F1D2ABBC000BDE5CD /* Swift */,
+			);
+			name = SearchLogic;
+			sourceTree = "<group>";
+		};
+		B6D1F76F1D2ABBC000BDE5CD /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				B6D1F7711D2ABD0300BDE5CD /* Main_Swift.storyboard */,
+				B6D1F7671D2ABB3700BDE5CD /* SearchHomeViewControl.swift */,
+				B6D1F7661D2ABB3700BDE5CD /* SampleiTunesSearch-Bridging-Header.h */,
+				B6D1F7691D2ABB8D00BDE5CD /* SearchDynamicTableCell.swift */,
+				B6D1F76B1D2ABBA700BDE5CD /* SearchContainerView.swift */,
+				B6D1F76D1D2ABBBB00BDE5CD /* SearchDetailsView.swift */,
+			);
+			name = Swift;
+			sourceTree = "<group>";
+		};
+		B6D1F7701D2ABBCF00BDE5CD /* ObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
 				B63F8A2E1D1D15DD00556908 /* SearchDetailsViewController.h */,
@@ -338,7 +374,7 @@
 				B61823421D1AD70B00D7972E /* SearchHomeViewController.m */,
 				B61823441D1AD70B00D7972E /* Main.storyboard */,
 			);
-			name = SearchLogic;
+			name = ObjectiveC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B618234E1D1AD70B00D7972E /* LaunchScreen.storyboard in Resources */,
+				B6D1F7731D2ABD0300BDE5CD /* Main_Swift.storyboard in Resources */,
 				B618234B1D1AD70B00D7972E /* Assets.xcassets in Resources */,
 				B61823461D1AD70B00D7972E /* Main.storyboard in Resources */,
 			);
@@ -472,9 +509,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B63F8A9E1D1DEE7100556908 /* UIImage+ImageEffects.m in Sources */,
+				B6D1F7681D2ABB3700BDE5CD /* SearchHomeViewControl.swift in Sources */,
 				B63F8A891D1DEE7100556908 /* SCLAlertView.m in Sources */,
 				B63F8A8C1D1DEE7100556908 /* SCLAlertViewResponder.m in Sources */,
 				B63F8A5D1D1DD04000556908 /* UIRefreshControl+AFNetworking.m in Sources */,
+				B6D1F7771D2B29C500BDE5CD /* SwiftConstants.swift in Sources */,
 				B63F89D01D1B825A00556908 /* SearchContainerViewController.m in Sources */,
 				B63F89E41D1BF96B00556908 /* AFNetworkReachabilityManager.m in Sources */,
 				B63F8A8F1D1DEE7100556908 /* SCLAlertViewStyleKit.m in Sources */,
@@ -492,8 +531,10 @@
 				B63F8A511D1DD04000556908 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				B63F8A4E1D1DD04000556908 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B63F8A481D1DD04000556908 /* AFAutoPurgingImageCache.m in Sources */,
+				B6D1F76A1D2ABB8D00BDE5CD /* SearchDynamicTableCell.swift in Sources */,
 				B63F89E71D1BF96B00556908 /* AFSecurityPolicy.m in Sources */,
 				B63F89EA1D1BF96B00556908 /* AFURLRequestSerialization.m in Sources */,
+				B6D1F76E1D2ABBBB00BDE5CD /* SearchDetailsView.swift in Sources */,
 				B618233D1D1AD70B00D7972E /* main.m in Sources */,
 				B63F8A921D1DEE7100556908 /* SCLButton.m in Sources */,
 				B61823491D1AD70B00D7972E /* SampleiTunesSearch.xcdatamodeld in Sources */,
@@ -503,6 +544,7 @@
 				B63F89F01D1BF96B00556908 /* AFURLSessionManager.m in Sources */,
 				B63F8A571D1DD04000556908 /* UIImageView+AFNetworking.m in Sources */,
 				B63F89E11D1BF96B00556908 /* AFHTTPSessionManager.m in Sources */,
+				B6D1F76C1D2ABBA700BDE5CD /* SearchContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +594,14 @@
 				B618234D1D1AD70B00D7972E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B6D1F7711D2ABD0300BDE5CD /* Main_Swift.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B6D1F7721D2ABD0300BDE5CD /* Base */,
+			);
+			name = Main_Swift.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -645,10 +695,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SampleiTunesSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.SampleiTunesSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SampleiTunesSearch/SampleiTunesSearch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -656,10 +709,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SampleiTunesSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.SampleiTunesSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SampleiTunesSearch/SampleiTunesSearch-Bridging-Header.h";
 			};
 			name = Release;
 		};

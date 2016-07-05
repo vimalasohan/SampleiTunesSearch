@@ -23,6 +23,7 @@ self.priceTrackString.text = [NSString stringWithFormat:DOLLAR_STRING,_responseV
 #define UI_LOADING_INDICATOR_COLOR [UIColor colorWithRed:0.09 green:0.71 blue:0.96 alpha:1.0];
 #define SPINNER_CENTER_FRAME CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
 //HomeViewController String Constants
+
 static NSString * const END_POINT_URL = @"http://itunes.apple.com/search?term=%@&country=us&entity=%@";
 static NSString * const RESULTS_STRING = @"results";
 

@@ -68,9 +68,15 @@ VSDropdown *_dropdown;
     else
     {
         _allSelectedItems = [dropDown.selectedItems firstObject];
-        
+
     }
     [btn setTitle:_allSelectedItems forState:UIControlStateNormal];
+    if (_searchBarString!=nil) {
+        _searchValues = @{SEARCH_BAR_STRING_VALUE:_searchBarString,
+                          ENTITY_VALUE_SELECTED:_allSelectedItems};
+        [[NSNotificationCenter defaultCenter]postNotificationName:SEARCHBUTTON_CLICKED_NOTIFICATION object:nil userInfo:_searchValues];
+    }
+
 }
 
 -(void)showDropDownForButton:(UIButton *)sender adContents:(NSArray *)contents multipleSelection:(BOOL)multipleSelection
